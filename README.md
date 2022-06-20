@@ -33,13 +33,11 @@ _requirements.txt_ file, with:
 pip install -r requirements.txt
 ```
 
-After installing the dependencies run
+After installing the dependencies run the following command in the root directory of the project:
 
 ```
 pip install .
 ```
-
-from the main directory of the code. 
 
 ## How To Run An Experiment
 
@@ -53,7 +51,7 @@ run_experiment.sh
 This script takes in input: 
 - 
 - the prefix of an output directory;
-- the input data directory containing the _train.txt_, _dev.txt_ and _test.txt_ files
+- the input data directory containing the _train.txt_, _dev.txt_ and _test.txt_ files (we're providing the split of data we used for SST with 50 examples)
 - a random seed
 - a gpu index
 
@@ -71,7 +69,7 @@ sh run_experiment.sh sst5_50 ../../data/sst5_50 5 0
 These commands can be executed sequentially or in parallel. If executed in parallel, we suggest to use a different GPU index for each command.
 After the execution, 5 directories will be created in output: sst5_10_output_seedX, where X will have the value of a specific random seed.
 
-To compute the performances with the average, as reported in the paper, please use the script in dats/utils/compute_experiments_performance.py, with:
+To compute the performances with the average, as reported in the paper, please use the script in dats/utils/compute_experiments_performance.py. For example:
 
 ```
 python ../dats/utils/compute_experiments_performance.py --experiment-dirs sst5_50_output_seed1/bert-base-uncased_10epbert_5e-5lr_0.00simbert_5e-5bartlr/ sst5_50_output_seed2/bert-base-uncased_10epbert_5e-5lr_0.00simbert_5e-5bartlr/ sst5_50_output_seed3/bert-base-uncased_10epbert_5e-5lr_0.00simbert_5e-5bartlr/ sst5_50_output_seed4/bert-base-uncased_10epbert_5e-5lr_0.00simbert_5e-5bartlr/ sst5_50_output_seed5/bert-base-uncased_10epbert_5e-5lr_0.00simbert_5e-5bartlr/
