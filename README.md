@@ -19,7 +19,7 @@ results on text classification and natural language inference tasks by up to 10%
 
 The code is made of different scripts depending on the following packages:
 
-- simpletransformers==0.61.13
+- simpletransformers==0.63.7
 - torch==1.8.1
 - transformers==4.8.2
 
