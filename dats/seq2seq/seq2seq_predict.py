@@ -17,13 +17,9 @@ Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 import os
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
-from datetime import datetime
 import argparse
 import pandas as pd
-import numpy as np
 import random
-
-from sklearn.model_selection import train_test_split
 
 from simpletransformers.seq2seq import Seq2SeqModel, Seq2SeqArgs
 
@@ -31,12 +27,6 @@ from dats.utils.data import *
 
 import torch.multiprocessing
 torch.multiprocessing.set_sharing_strategy('file_system')
-
-
-def clean_qc(input_str):
-    res = input_str
-    input_str = input_str.replace("?"," ?")
-    input_str = input_str.replace("''"," ?")
 
 
 parser = argparse.ArgumentParser()

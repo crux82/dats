@@ -14,20 +14,10 @@ Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
   limitations under the License.
 """
 
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
-
-import io
 import random
-import numpy as np
 import time
-import math
 
 import argparse
-import os
-
-from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
 
 from model import *
 

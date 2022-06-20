@@ -18,7 +18,6 @@ import torch
 import torch.nn as nn
 
 import datetime
-import sys
 import numpy as np
 import re
 
@@ -290,6 +289,7 @@ def produce_similar_examples(output_file_path, target_examples, train_examples, 
             if cand_label == correct_label:
               f.write('{:}\t{:}\t{:}\t{:}\t{:}\t{:}\t{:}\t{:}\n'.format(i,counter,correct_label,example[0],cosim,cand_label,ex_for_label[0],first_predicted_label))
               counter = counter + 1
+
 
 def clear(str):
     res = str
