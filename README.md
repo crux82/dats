@@ -77,11 +77,18 @@ To compute the performances with the average, as reported in the paper, please u
 python ../dats/utils/compute_experiments_performance.py --experiment-dirs sst5_50_output_seed1/bert-base-uncased_10epbert_5e-5lr_0.00simbert_5e-5bartlr/ sst5_50_output_seed2/bert-base-uncased_10epbert_5e-5lr_0.00simbert_5e-5bartlr/ sst5_50_output_seed3/bert-base-uncased_10epbert_5e-5lr_0.00simbert_5e-5bartlr/ sst5_50_output_seed4/bert-base-uncased_10epbert_5e-5lr_0.00simbert_5e-5bartlr/ sst5_50_output_seed5/bert-base-uncased_10epbert_5e-5lr_0.00simbert_5e-5bartlr/
 ```
 
-This command will produce in output something similar to:
+This command will produce in output:
 
 ```
-
+Model	Validation Avg Acc	Validation Std	Test Avg Acc	Test Std
+BERT	0.3868	0.009703607576566572	0.4006	0.011723480711802275
+DATS	0.43220000000000003	0.006554387843269582	0.4328	0.01351147660324364
+Ttest_indResult(statistic=-3.6000694437746605, pvalue=0.006981594100870437)
 ```
+
+The output contains the validation average accuracy and standard deviation, the test average accuracy and standard deviation
+for the baseline model (BERT) and DATS.
+Moreover, the code will output also the p-value for the statistical significance test.
 
 ## Citation
 
