@@ -17,7 +17,7 @@ results on text classification and natural language inference tasks by up to 10%
 
 ## Requirements
 
-The code is made of different scripts depending on the following packages:
+The code require Python3 and it is made of different scripts depending on the following packages:
 
 - simpletransformers==0.63.7
 - torch==1.8.1
@@ -59,11 +59,11 @@ In the paper, we run each experiment 5 times with 5 different random seeds. To r
 with 10 example per category, you should run the following commands:
 
 ```
-sh run_experiment.sh sst5_50 ../../data/sst5_50 1 0
-sh run_experiment.sh sst5_50 ../../data/sst5_50 2 0
-sh run_experiment.sh sst5_50 ../../data/sst5_50 3 0
-sh run_experiment.sh sst5_50 ../../data/sst5_50 4 0
-sh run_experiment.sh sst5_50 ../../data/sst5_50 5 0
+sh run_experiment.sh sst5_50 ../data/sst5_50 1 0
+sh run_experiment.sh sst5_50 ../data/sst5_50 2 0
+sh run_experiment.sh sst5_50 ../data/sst5_50 3 0
+sh run_experiment.sh sst5_50 ../data/sst5_50 4 0
+sh run_experiment.sh sst5_50 ../data/sst5_50 5 0
 ```
 
 These commands can be executed sequentially or in parallel. If executed in parallel, we suggest to use a different GPU index for each command.
