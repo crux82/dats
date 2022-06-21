@@ -17,7 +17,7 @@ results on text classification and natural language inference tasks by up to 10%
 
 ## Requirements
 
-The code require Python3 and it is made of different scripts depending on the following packages:
+The code requires Python3 and it is made of different scripts depending on the following packages:
 
 - simpletransformers==0.63.7
 - torch==1.8.1
