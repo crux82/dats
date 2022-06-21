@@ -20,7 +20,7 @@ from setuptools import setup, find_packages
 # Declare your non-python data files:
 # Files underneath configuration/ will be copied into the build preserving the
 # subdirectory structure if they exist.
-data_files = ['data', 'scripts']
+data_files = [ ]
 
 setup(
     name="DATS",
