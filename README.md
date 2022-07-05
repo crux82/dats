@@ -1,23 +1,34 @@
 # Data Augmentation based on Task-specific Similarity
 
-## Introduction
-
 This repository contains the code for the paper _Learning to Generate Examples for Semantic Processing Tasks_ published at 
 NAACL 2022 - by Danilo Croce (Tor Vergata, University of Rome), Simone Filice (Amazon), Giuseppe Castellucci (Amazon) 
-and Roberto Basili (Tor Vergata, University of Rome).
+and Roberto Basili (Tor Vergata, University of Rome). The paper introduces DATS (Data Augmentation based on Task-specific Similarity), a novel data-augmentation technique for text classification based on pre-trained large language models. 
 
-The paper introduces DATS (Data Augmentation based on Task-specific Similarity), a novel data-augmentation technique
-for text classification based on pre-trained large language models. The key idea of DATS is to introduce lexical and structural
-variability in the generated examples that are still coherent with the target category they're generated from. In order to achieve this result, 
-DATS first learns a task-specific similarity function to create a dataset of example pairs that are then used to fine-tune a pre-trained NLG model.
-The fine-tuned model is then used to generate novel examples for the target categories.
+## Introduction
 
-Experiments in low resource settings show  that augmenting the training material with the  proposed strategy systematically improves the
-results on text classification and natural language inference tasks by up to 10% accuracy, outperforming existing DA approaches.
+When using recent pre-trained language models, such as BERT (Devlin et al., 2018) or RoBERTa (Liu et al., 2019), the effectiveness
+of traditional DA methods (e.g., back-translation or EDA) is extremely limited, and sometimes they can even hurt the results (Longpre et al.,2020). A possible explanation for this inefficacy is that these DA techniques introduce lexical and structural variability that accurate language models directly induce during pre-training. The usefulness of synthetic examples is strictly related to their diversity from the original training data. At the same time, diverging too much from the initial data might increase the risk of introducing noisy annotations, i.e., synthetic data not reflecting the class of the original examples they were generated from. 
+
+To directly tackle the trade-off between diversity and label consistency, we propose DATS (Data Augmentation based on Task-specific Similarity), a novel data-augmentation technique for text classification based on Natural Language Generation (NLG) models.
 
 ## Method Overview
 
-To augment the training material for a given NLU task _t_, we propose to fine-tune a NLG model _M_ (e.g., BART) so that it learns to generate synthetic training examples for the task _t_. Specifically, our synthetic example generator has the form _M(c, s<sub>i</sub>)=s<sub>o</sub>_: the model prompt is a class _c_ and an example _s<sub>i</sub>_ of that class; the model output is a new example _s<sub>o</sub>_ which is expected to belong to class _c_.
+To augment the training material for a given NLU task _t_, we propose to fine-tune a NLG model _M_ (e.g., BART) so that it learns to generate synthetic training examples for the task _t_. Specifically, our synthetic example generator has the form _M(c, s<sub>i</sub>)=s<sub>o</sub>_: the model prompt is a class _c_ and an example _s<sub>i</sub>_ of that class; the model output is a new example _s<sub>o</sub>_ which is expected to belong to class _c_ and "inspired" by _s<sub>i</sub>_.
+Starting from a reduced set of annotated examples, we first learn a task-oriented similarity function that we use to automatically create pairs of similar examples. Then, we use these pairs to train the model _M_ to generate examples similar to the input one.
+
+The overall data augmentation procedure is exemplified in the figure below:
+![DATS schema](https://github.com/crux82/dats/blob/main/training_schema_DATS.png)
+
+1. We split our data into three folds and use the first fold to train a classifier (e.g., BERT). 
+2. We convert the examples from the second fold into vectors by running the fine-tuned classifier and taking the output \[CLS\] embedding. We expect these vectors to reflect task-oriented information. 
+3. For each class, we compute all pairwise cosine similarities of these vectors and create pairs of similar examples.
+4. We train a NLG model (e.g., BART) on the resulting input/output pairs.
+5. We use the examples from the third fold to prompt the NLG model and generate new synthetic examples.
+
+We can vary the folds and iterate this procedure to generate more data.
+
+Experiments in low resource settings show  that augmenting the training material with the  proposed strategy systematically improves the
+results on text classification and natural language inference tasks by up to 10% accuracy, outperforming existing DA approaches.
 
 ## Requirements
 
