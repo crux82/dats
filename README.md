@@ -15,6 +15,10 @@ The fine-tuned model is then used to generate novel examples for the target cate
 Experiments in low resource settings show  that augmenting the training material with the  proposed strategy systematically improves the
 results on text classification and natural language inference tasks by up to 10% accuracy, outperforming existing DA approaches.
 
+## Method Overview
+
+To augment the training material for a given NLU task _t_, we propose to fine-tune a NLG model _M_ (e.g., BART) so that it learns to generate synthetic training examples for the task _t_. Specifically, our synthetic example generator has the form _M(c, s<sub>i</sub>)=s<sub>o</sub>_: the model prompt is a class _c_ and an example _s<sub>i</sub>_ of that class; the model output is a new example _s<sub>o</sub>_ which is expected to belong to class _c_.
+
 ## Requirements
 
 The code requires Python3 and the following packages:
