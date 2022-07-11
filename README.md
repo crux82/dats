@@ -106,14 +106,19 @@ Moreover, the code will output also the p-value for the statistical significance
 ## Citation
 
 ```
-@inproceedings{croce-etal-2022-dats,
+@inproceedings{croce-etal-2022-learning,
     title = "Learning to Generate Examples for Semantic Processing Tasks",
     author = "Croce, Danilo  and
-      Filice, Simone and
+      Filice, Simone  and
       Castellucci, Giuseppe  and
       Basili, Roberto",
-    booktitle = "Proceedings of North American Association for Computational Linguistics Conference",
+    booktitle = "Proceedings of the 2022 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies",
     month = jul,
-    year = "2022"
+    year = "2022",
+    address = "Seattle, United States",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2022.naacl-main.340",
+    pages = "4587--4601",
+    abstract = "Even if recent Transformer-based architectures, such as BERT, achieved impressive results in semantic processing tasks, their fine-tuning stage still requires large scale training resources. Usually, Data Augmentation (DA) techniques can help to deal with low resource settings. In Text Classification tasks, the objective of DA is the generation of well-formed sentences that i) represent the desired task category and ii) are novel with respect to existing sentences. In this paper, we propose a neural approach to automatically learn to generate new examples using a pre-trained sequence-to-sequence model. We first learn a task-oriented similarity function that we use to pair similar examples. Then, we use these example pairs to train a model to generate examples. Experiments in low resource settings show that augmenting the training material with the proposed strategy systematically improves the results on text classification and natural language inference tasks by up to 10{\%} accuracy, outperforming existing DA approaches.",
 }
 ```
